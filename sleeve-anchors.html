@@ -187,7 +187,7 @@
         </header>
 
         <!-- Banner Section Start -->
-        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <!-- <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="assets/images/background/klimb banner 1.png" class="d-block w-100" alt="...">
@@ -207,7 +207,17 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
-        </div>
+        </div> -->
+
+
+
+
+<section class="fastener-banner">
+    <div class="fastener-banner-content">
+        <h2>Sleeve Anchors</h2>
+        <!-- <p>High-quality fastening solutions for industrial and construction needs</p> -->
+    </div>
+</section>
 
 
 
@@ -233,16 +243,34 @@
     </div>
 
     <!-- Right Image -->
-    <div class="cf-image">
-      <img src="assets/images/product/fastener/fastner-img.jpg" alt="Chemical Fasteners">
-    </div>
+<div class="cf-image">
+  <div class="slider">
+    <img src="assets/images/sm.png" class="slide active" alt="Image 1">
+    <img src="assets/images/smk.png" class="slide" alt="Image 2">
+  </div>
+</div>
 
   </div>
 </section>
 
 
 
+<script>
+  let slides = document.querySelectorAll('.slide');
+  let index = 0;
 
+  function showSlide() {
+    slides.forEach((slide) => slide.classList.remove('active'));
+    slides[index].classList.add('active');
+
+    index++;
+    if (index >= slides.length) {
+      index = 0;
+    }
+  }
+
+  setInterval(showSlide, 2000); // change image every 2 seconds
+</script>
 
 
 
