@@ -223,31 +223,66 @@
 
 
 
-<section class="chemical-fasteners-section">
+<!-- <section class="chemical-fasteners-section">
   <div class="cf-container">
     
-    <!-- Left Content -->
     <div class="cf-content">
-      <!-- <h1>Countersunk Wood Screws</h1> -->
 
      <p>Countersunk wood screws are designed for flush finishing and smooth surface appearance, making them ideal for furniture, cabinetry and decorative woodwork. These screws sit neatly within the material, ensuring a clean and professional look without protruding heads.</p>
 
      <p>With sharp drilling points and precision threads, Klimb Fasteners countersunk screws deliver strong holding, neat finish and long-term reliability.</p>
 
-     <!-- <h2 class="le-title"></h2>
-     <p>KMWHT ensures stronger grip in wood, KMWHT-B offers durability, while KMWHT-D handles heavy-duty wood applications.</p>
-     <p><b>Content:</b> KMWHT screws offer enhanced thread grip, ensuring strong holding in wooden surfaces.</p>
-     <p>KMWHT-B screws provide better durability and corrosion resistance, while KMWHT-D screws are designed for heavy-duty applications requiring deeper penetration and stronger hold.</p> -->
-      <!-- <a href="#" class="cf-btn">Learn More</a> -->
     </div>
 
-    <!-- Right Image -->
     <div class="cf-image">
       <img src="assets/images/product/fastener/fastner-img.jpg" alt="Chemical Fasteners">
     </div>
 
   </div>
+</section> -->
+
+
+<section class="chemical-fasteners-section">
+  <div class="cf-container">
+    
+    <!-- Left Content -->
+    <div class="cf-content">
+      <p>Countersunk wood screws are designed for flush finishing and smooth surface appearance, making them ideal for furniture, cabinetry and decorative woodwork. These screws sit neatly within the material, ensuring a clean and professional look without protruding heads.</p>
+
+     <p>With sharp drilling points and precision threads, Klimb Fasteners countersunk screws deliver strong holding, neat finish and long-term reliability.</p>
+
+      <!-- <a href="#" class="cf-btn">Learn More</a> -->
+    </div>
+
+    <!-- Right Image -->
+<div class="cf-image">
+  <div class="slider">
+    <img src="assets/images/wkcs.png" class="slide active" alt="Image 1">
+    <img src="assets/images/kmwht-d.png" class="slide" alt="Image 2">
+  </div>
+</div>
+
+  </div>
 </section>
+
+
+
+<script>
+  let slides = document.querySelectorAll('.slide');
+  let index = 0;
+
+  function showSlide() {
+    slides.forEach((slide) => slide.classList.remove('active'));
+    slides[index].classList.add('active');
+
+    index++;
+    if (index >= slides.length) {
+      index = 0;
+    }
+  }
+
+  setInterval(showSlide, 2000); // change image every 2 seconds
+</script>
 
 
 
