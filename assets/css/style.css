@@ -12764,5 +12764,19 @@ border-right:none;
 
 
 
+.card-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+background-color: #b10000;
+    font-weight: 600;
+    color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
+.card-btn:hover {
+  background-color: red;
+}
 
