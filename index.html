@@ -1043,6 +1043,7 @@
   <h2>Our Branches</h2>
 
   <div class="slider">
+    
     <div class="slider-track">
 
 
@@ -1200,18 +1201,38 @@
 
 
 <script>
-  const slider = document.querySelector('.slider-track');
+const slider = document.querySelector(".slider");
+const track = document.querySelector(".slider-track");
 
-  slider.addEventListener('mouseenter', () => {
-    slider.style.animationPlayState = 'paused';
-  });
+let isDown = false;
+let startX;
+let scrollLeft;
 
-  slider.addEventListener('mouseleave', () => {
-    slider.style.animationPlayState = 'running';
-  });
+slider.addEventListener("mousedown", (e) => {
+  isDown = true;
+  slider.classList.add("active");
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = track.scrollLeft || 0;
+});
+
+slider.addEventListener("mouseleave", () => {
+  isDown = false;
+  slider.classList.remove("active");
+});
+
+slider.addEventListener("mouseup", () => {
+  isDown = false;
+  slider.classList.remove("active");
+});
+
+slider.addEventListener("mousemove", (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - slider.offsetLeft;
+  const walk = (x - startX) * 1.5; // speed control
+  track.style.transform = `translateX(${-walk}px)`;
+});
 </script>
-
-
 
 
 
