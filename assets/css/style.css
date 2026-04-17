@@ -9145,7 +9145,7 @@ div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
 
 .benefits-grid-section {
   padding: 40px 0;
-  background: #080015;
+  background: linear-gradient(135deg, #200040, #0f001f);
 }
 
 .bg-container {
@@ -9373,7 +9373,7 @@ div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
 
 .fastener-industries {
   padding: 90px 20px;
-  background: #080015;
+  background: linear-gradient(135deg, #200040, #0f001f);
   /* background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); */
   font-family: 'Segoe UI', sans-serif;
   color: #fff;
@@ -10962,7 +10962,18 @@ border-right:none;
     color: #000000;
     letter-spacing: 1px;
     font-size: 20px;
-    font-size: 20px;
+    font-weight: 600;
+}
+
+.card h2 {
+  font-size: 22px;
+  font-weight: 900;
+  color: #3a275a;
+}
+
+.card p {
+  font-size: 16px;
+  color: #000;
 }
 
 /* HOVER */
@@ -10980,7 +10991,7 @@ border-right:none;
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .card {
-    min-width: 200px;
+    min-width: 350px;
   }
 
   .kpskpr-container p {
@@ -10990,7 +11001,7 @@ border-right:none;
 
 @media (max-width: 480px) {
   .card {
-    min-width: 160px;
+    min-width: 350px;
   }
 
   .kpskpr-container p {
@@ -11841,13 +11852,13 @@ border-right:none;
   position: relative;
 }
 
-.slide {
+.slided {
   width: 100%;
   display: none;
   transition: opacity 0.5s ease-in-out;
 }
 
-.slide.active {
+.slided.active {
   display: block;
 }
 
