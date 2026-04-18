@@ -65,6 +65,8 @@
     <link rel="stylesheet" href="assets/vendor/slick/css/slick.min.css">
     <!-- Main Style -->
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     
    
     <script type="application/ld+json">
@@ -1042,12 +1044,15 @@
         <section class="branches-section">
   <h2>Our Branches</h2>
 
-  <div class="slider">
-    
-    <div class="slider-track">
+  <div class="slider-wrapper">
+    <button class="nav prev-card">&#10094;</button>
+    <button class="nav next-card">&#10095;</button>
+
+    <div class="slider-card">
+      <div class="slider-track">
 
 
-      <div class="card">
+      <div class="card-card">
         <div class="logo-box">
           <img src="assets/images/logo.png" alt="logo">
         </div>
@@ -1062,7 +1067,7 @@
   </a>
       </div>
 
-      <div class="card">
+      <div class="card-card">
         <div class="logo-box">
           <img src="assets/images/logo.png" alt="logo">
         </div>
@@ -1073,18 +1078,19 @@
         <a href="mechanical-anchors.html"><button class="card-btn">Explore More</button></a>
       </div>
 
-      <div class="card">
+      <div class="card-card">
         <div class="logo-box">
           <img src="assets/images/logo.png" alt="logo">
         </div>
         <h3>Service Hub - Samba</h3>
         <h2>Fasteners & Fixings</h2>
-        <p>Daily site dispatch to Samba Industrial Estates & SEZs.</p><br>
+        <p>Daily site dispatch to Samba Industrial Estates & SEZs.</p>
+    
 
         <a href="frame-fixing-screws.html"><button class="card-btn">Explore More</button></a>
       </div>
 
-      <div class="card">
+      <div class="card-card">
         <div class="logo-box">
           <img src="assets/images/logo.png" alt="logo">
         </div>
@@ -1095,18 +1101,18 @@
         <a href="chemical-anchors.html"><button class="card-btn">Explore More</button></a>
       </div>
 
-      <div class="card">
+      <div class="card-card">
         <div class="logo-box">
           <img src="assets/images/logo.png" alt="logo">
         </div>
         <h3>Service Hub - Amritsar</h3>
         <h2>Industrial Fastener Dealer</h2>
-        <p>Bulk supply partner for Punjab’s manufacturing hubs.</p><br>
+        <p>Bulk supply partner for Punjab’s manufacturing hubs.</p>
 
         <a href="fasteners.html"><button class="card-btn">Explore More</button></a>
       </div>
 
-      <div class="card">
+      <div class="card-card">
         <div class="logo-box">
           <img src="assets/images/logo.png" alt="logo">
         </div>
@@ -1117,7 +1123,7 @@
         <a href="screws-for-wooden-constructions.html"><button class="card-btn">Explore More</button></a>
       </div>
 
-      <div class="card">
+      <div class="card-card">
         <div class="logo-box">
           <img src="assets/images/logo.png" alt="logo">
         </div>
@@ -1128,7 +1134,7 @@
         <a href="fasteners.html"><button class="card-btn">Explore More</button></a>
       </div>
 
-      <div class="card">
+      <div class="card-card">
         <div class="logo-box">
           <img src="assets/images/logo.png" alt="logo">
         </div>
@@ -1139,7 +1145,7 @@
         <a href="threaded-rod.html"><button class="card-btn">Explore More</button></a>
       </div>
 
-      <div class="card">
+      <div class="card-card">
         <div class="logo-box">
           <img src="assets/images/logo.png" alt="logo">
         </div>
@@ -1150,7 +1156,7 @@
         <a href="heavy-duty-mechanical-anchors.html"><button class="card-btn">Explore More</button></a>
       </div>
 
-      <div class="card">
+      <div class="card-card">
         <div class="logo-box">
           <img src="assets/images/logo.png" alt="logo">
         </div>
@@ -1161,7 +1167,7 @@
         <a href="fasteners.html"><button class="card-btn">Explore More</button></a>
       </div>
 
-      <div class="card">
+      <div class="card-card">
         <div class="logo-box">
           <img src="assets/images/logo.png" alt="logo">
         </div>
@@ -1172,7 +1178,7 @@
         <a href="fasteners.html"><button class="card-btn">Explore More</button></a>
       </div>
 
-      <div class="card">
+      <div class="card-card">
         <div class="logo-box">
           <img src="assets/images/logo.png" alt="logo">
         </div>
@@ -1183,7 +1189,7 @@
         <a href="threaded-rod.html"><button class="card-btn">Explore More</button></a>
       </div>
 
-      <div class="card">
+      <div class="card-card">
         <div class="logo-box">
           <img src="assets/images/logo.png" alt="logo">
         </div>
@@ -1194,6 +1200,7 @@
         <a href="about.html"><button class="card-btn">Explore More</button></a>
       </div>
 
+      </div>
     </div>
   </div>
 </section>
@@ -1201,39 +1208,62 @@
 
 
 <script>
-const slider = document.querySelector(".slider");
-const track = document.querySelector(".slider-track");
+const slider = document.querySelector(".slider-card");
+const nextBtn = document.querySelector(".next-card");
+const prevBtn = document.querySelector(".prev-card");
 
-let isDown = false;
-let startX;
-let scrollLeft;
+// dynamic width (card + gap)
+function getWidth() {
+  const card = document.querySelector(".card-card");
+  const track = document.querySelector(".slider-track");
+  const gap = parseInt(window.getComputedStyle(track).gap) || 20;
+  return card.offsetWidth + gap;
+}
 
-slider.addEventListener("mousedown", (e) => {
-  isDown = true;
-  slider.classList.add("active");
-  startX = e.pageX - slider.offsetLeft;
-  scrollLeft = track.scrollLeft || 0;
-});
+// 👉 RIGHT BUTTON
+nextBtn.onclick = () => {
+  slider.scrollTo({
+    left: slider.scrollLeft + getWidth(),
+    behavior: "smooth"
+  });
+};
 
-slider.addEventListener("mouseleave", () => {
-  isDown = false;
-  slider.classList.remove("active");
-});
+// 👉 LEFT BUTTON (FIXED)
+prevBtn.onclick = () => {
+  slider.scrollTo({
+    left: slider.scrollLeft - getWidth(),
+    behavior: "smooth"
+  });
+};
 
-slider.addEventListener("mouseup", () => {
-  isDown = false;
-  slider.classList.remove("active");
-});
+// 👉 AUTO SLIDE
+let autoSlide;
 
-slider.addEventListener("mousemove", (e) => {
-  if (!isDown) return;
-  e.preventDefault();
-  const x = e.pageX - slider.offsetLeft;
-  const walk = (x - startX) * 1.5; // speed control
-  track.style.transform = `translateX(${-walk}px)`;
-});
+function startAuto() {
+  autoSlide = setInterval(() => {
+    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 5) {
+      // reset to start
+      slider.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      slider.scrollTo({
+        left: slider.scrollLeft + getWidth(),
+        behavior: "smooth"
+      });
+    }
+  }, 2500);
+}
+
+function stopAuto() {
+  clearInterval(autoSlide);
+}
+
+// start auto
+startAuto();
+
+// 👉 PAUSE ON HOVER
+slider.addEventListener("mouseenter", stopAuto);
+slider.addEventListener("mouseleave", startAuto);
 </script>
-
 
 
 
@@ -1389,6 +1419,8 @@ slider.addEventListener("mousemove", (e) => {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> 
 
     <script type="text/javascript">
         $(document).ready(function () {
