@@ -264,41 +264,79 @@
 
       <h2 class="sdx-title">WKCP, WKCP-B & WKCP-D</h2>
 
-      <!-- <div class="sdx-cards"> -->
-
-        <!-- <div class="sdx-card">
-          <h4>WKCP Screws</h4> -->
           <p class="sdx-text">
             <b>WKCP screws</b> are designed for high clamping force with a washer head, making them ideal for panel and board fixing where strong hold is required.
           </p>
-        <!-- </div> -->
 
-        <!-- <div class="sdx-card">
-          <h4>WKCP-B Screws</h4> -->
           <p class="sdx-text">
             <b>WKCP-B screws</b> are developed with enhanced anti-corrosion coating, making them suitable for semi-outdoor environments where moisture resistance and durability are important.
           </p>
-        <!-- </div> -->
 
-        <!-- <div class="sdx-card">
-          <h4>WKCP-D Screws</h4> -->
           <p class="sdx-text">
             <b>WKCP-D screws</b> are heavy-duty fasteners designed for thick wooden sections and structural use, offering superior strength and durability.
           </p>
-        <!-- </div> -->
-
-      <!-- </div> -->
 
     </div>
 
     <!-- RIGHT IMAGE -->
-    <div class="sdx-image">
-      <img src="assets/images/wkcp-b.png" alt="Fasteners">
+    <!-- RIGHT IMAGE SLIDER -->
+<div class="sdx-image">
+
+  <div class="sdx-slider">
+    <div class="sdx-slides">
+      <img src="assets/images/wkcp-new.png" alt="Fastener 1">
+      <img src="assets/images/wkcs-new.png" alt="Fastener 2">
     </div>
+  </div>
+
+</div>
 
   </div>
 </section>
 
+
+<style>
+    .sdx-image {
+  width: 100%;
+  max-width: 400px;
+  overflow: hidden;
+}
+
+.sdx-slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.sdx-slides {
+  display: flex;
+  /* width: 200%; */
+  animation: slideAnim 6s infinite;
+}
+
+.sdx-slides img {
+  width: 100%;
+  flex: 0 0 100%;
+  object-fit: contain;
+}
+
+/* Animation */
+@keyframes slideAnim {
+  0%   { transform: translateX(0); }
+  45%  { transform: translateX(0); }
+
+  50%  { transform: translateX(-100%); }
+  95%  { transform: translateX(-100%); }
+
+  100% { transform: translateX(0); }
+}
+
+@media (max-width: 768px) {
+    .sdx-image img {
+        height: 450px ;
+    }
+}
+</style>
 
 
 
